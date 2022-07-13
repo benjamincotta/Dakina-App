@@ -10,4 +10,10 @@
     display: flex;
 }
 
+input[type="text"]::placeholder {
+    padding-left: 10px;
+}
+textarea[type="text"]::placeholder {
+    padding-left: 10px;
+}
 

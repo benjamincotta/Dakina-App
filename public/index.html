@@ -16,14 +16,22 @@
 </head>
 
 <body class="bg-background">
-    <div class="new-tweet-modal flex justify-center items-center w-full h-full absolute bg-blue-900 z-10">
-        <form id="new-tweet-form" class="flex flex-col">
-            <label for="tweet-title">New Tweet Title</label>
-            <input type="text" id="tweet-title-input">
-            <label for="tweet-content">Tweet Content</label>
-            <input type="text-area" id="tweet-content-input">
-            <button>Select Tags</button>
-            <button type="submit">Add Tweet</button>
+    <div class="new-tweet-modal flex justify-center items-center w-full h-full absolute z-10">
+        <form id="new-tweet-form" class="min-w-[40%] flex flex-col text-center bg-soft_blue p-4 rounded">
+            <h3 class="my-3 text-2xl text-blue-900 font-light">New tweet</h3>
+            <input type="text" id="tweet-title-input" class="my-2 py-2 rounded" placeholder="Title...">
+            <textarea type="text" id="tweet-content-input" class="my-2 py-2 rounded" cols="30" rows="6"
+                placeholder="Content..."></textarea>
+
+            <div class='new-tweet-form-buttons mt-8 flex flex-row justify-between'>
+                <button class="bg-red-400 text-white border-solid rounded-lg text-sm py-1 px-2">Select Tags</button>
+                <div>
+                    <button type="submit"
+                        class=" bg-red-600 text-white border-solid rounded text-lg px-4">Cancel</button>
+                    <button type="submit"
+                        class=" bg-blue-900 text-white border-solid rounded text-lg px-4">Save</button>
+                </div>
+            </div>
         </form>
     </div>
     <div class="container-md mx-8 md:mx-20">

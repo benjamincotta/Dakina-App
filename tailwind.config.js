@@ -12,6 +12,7 @@ module.exports = {
         turquoise: '#27F4E0',
         ghost_white: '#FAFAFF',
         my_pink: '#E56399',
+        soft_blue: '#C9D1EE',
       },
     },
   },
