@@ -33,8 +33,8 @@
             <div class='new-tweet-form-buttons mt-8 flex flex-row justify-between'>
                 <a href="#" class="bg-red-400 text-white border-solid rounded-lg text-sm py-1 px-2">Select Tags</a>
                 <div>
-                    <button type="submit"
-                        class=" bg-blue-900 text-white border-solid rounded text-lg px-4">Save</button>
+                    <button type="submit" id="save-tweet-button"
+                        class="bg-blue-900 text-white border-solid rounded text-lg px-4">Save</button>
                 </div>
             </div>
         </form>
@@ -87,7 +87,7 @@
             </div>
         </header>
         <main class="app-area mt-20 ">
-            <ul class="tweets-list grid md:grid-cols-2 gap-4">
+            <ul id="tweets-list" class="grid md:grid-cols-2 gap-4">
                 <li class="tweet border flex flex-col bg-gray-300 rounded">
                     <div
                         class="tweet-header pt-2 flex flex-col md:flex-row justify-between items-start md:items-center">

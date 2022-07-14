@@ -51,20 +51,24 @@ form.addEventListener('submit', e => {
 
   const newTweetTitle = tweetTitleInput.value
   const newTweetContent = tweetContentInput.value
+
   if (newTweetTitle === '') return
   const newTweet = {
     title: newTweetTitle,
     content: newTweetContent,
   }
+  toggleModal()
   tweets.push(newTweet)
-  renderTweets(newTweet)
-  saveTweets(newTweet)
+  // renderTweets(newTweet)
+  saveTweets()
   tweetTitleInput.value = ''
   tweetContentInput.value = ''
 })
 
 // SAVE TWEET
-
-// LOAD TWEET
+function saveTweets() {
+  localStorage.setItem(TITLE, JSON.stringify(tweets))
+}
+// LOAD TWEETS
 
 // DELETE TWEET
