@@ -17,7 +17,6 @@ editTweetButtons.forEach(button => {
   let dropdowncontent = button.parentElement.querySelector('.edit-dropdown')
   button.addEventListener('click', () => {
     dropdowncontent.classList.toggle('show-edit-dropdown')
-    console.log(button.previousElementSibling)
   })
 })
 
@@ -33,3 +32,39 @@ const toggleModal = () => {
 
 newTweetButton.addEventListener('click', toggleModal)
 closeModalButton.addEventListener('click', toggleModal)
+
+// FUNCTIONALITY:
+
+// CREATE NEW TWEET:
+// STORE TITLE AND CONTENT FROM FORM ON SUBMIT TO LOCAL STORAGE
+const form = document.getElementById('new-tweet-form')
+const tweetTitleInput = document.getElementById('tweet-title-input')
+const tweetContentInput = document.getElementById('tweet-content-input')
+const tweetsList = document.getElementById('tweets-list')
+let tweets = []
+const LOCAL_STORAGE_PREFIX = 'DAKINA'
+const TITLE = `${LOCAL_STORAGE_PREFIX}-tweet-title`
+const CONTENT = `${LOCAL_STORAGE_PREFIX}-tweet-content`
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+
+  const newTweetTitle = tweetTitleInput.value
+  const newTweetContent = tweetContentInput.value
+  if (newTweetTitle === '') return
+  const newTweet = {
+    title: newTweetTitle,
+    content: newTweetContent,
+  }
+  tweets.push(newTweet)
+  renderTweets(newTweet)
+  saveTweets(newTweet)
+  tweetTitleInput.value = ''
+  tweetContentInput.value = ''
+})
+
+// SAVE TWEET
+
+// LOAD TWEET
+
+// DELETE TWEET
