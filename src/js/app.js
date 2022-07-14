@@ -22,3 +22,14 @@ editTweetButtons.forEach(button => {
 })
 
 // NEW TWEET BUTTON + MODAL
+const newTweetButton = document.getElementById('new-tweet-button')
+const newTweetModal = document.getElementById('new-tweet-modal')
+const closeModalButton = document.getElementById('close-modal')
+
+const toggleModal = () => {
+  newTweetModal.classList.toggle('hidden')
+  newTweetModal.classList.toggle('flex')
+}
+
+newTweetButton.addEventListener('click', toggleModal)
+closeModalButton.addEventListener('click', toggleModal)
