@@ -36,7 +36,6 @@ closeModalButton.addEventListener('click', toggleModal)
 // FUNCTIONALITY:
 
 // CREATE NEW TWEET:
-// STORE TITLE AND CONTENT FROM FORM ON SUBMIT TO LOCAL STORAGE
 const form = document.getElementById('new-tweet-form')
 const tweetTitleInput = document.getElementById('tweet-title-input')
 const tweetContentInput = document.getElementById('tweet-content-input')
@@ -44,10 +43,10 @@ const tweetsList = document.getElementById('tweets-list')
 const template = document.querySelector('#tweet-item-template')
 
 const LOCAL_STORAGE_PREFIX = 'DAKINA'
-const TITLE = `${LOCAL_STORAGE_PREFIX}-tweet-title`
-const CONTENT = `${LOCAL_STORAGE_PREFIX}-tweet-content`
+const TWEET_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-tweet`
 
-let tweets = []
+let tweets = loadTweets()
+tweets.forEach(renderTweets)
 
 form.addEventListener('submit', e => {
   e.preventDefault()
@@ -67,10 +66,10 @@ form.addEventListener('submit', e => {
   tweetTitleInput.value = ''
   tweetContentInput.value = ''
 })
-
+loadTweets()
 // SAVE TWEET
 function saveTweets() {
-  localStorage.setItem(TITLE, JSON.stringify(tweets))
+  localStorage.setItem(TWEET_STORAGE_KEY, JSON.stringify(tweets))
 }
 // RENDER TWEETS
 function renderTweets(tweet) {
@@ -86,4 +85,11 @@ function renderTweets(tweet) {
   tweetContentElement.innerText = tweet.content
   tweetsList.appendChild(templateClone)
 }
+
+// LOAD TWEETS:
+function loadTweets() {
+  const tweetString = localStorage.getItem(TWEET_STORAGE_KEY)
+  return JSON.parse(tweetString) || []
+}
+
 // DELETE TWEET
