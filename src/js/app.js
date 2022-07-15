@@ -48,6 +48,13 @@ const TWEET_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-tweet`
 let tweets = loadTweets()
 tweets.forEach(renderTweets)
 
+// HIDE PROP TWEET:
+const propTweet = document.querySelector('.prop-tweet')
+if (tweets.length > 0) {
+  propTweet.classList.add('hidden')
+  propTweet.classList.remove('flex')
+}
+
 form.addEventListener('submit', e => {
   e.preventDefault()
 
