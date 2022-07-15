@@ -128,17 +128,16 @@
                             </div>
                             <span data-tweet-item-content class="mt-4"></span>
                         </div>
-                        <div class="edit-button flex justify-between mr-4 relative">
+                        <div class="flex justify-between mr-4 relative">
                             <div></div>
-                            <button class="edit-toggle">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-800 edit-icon"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path class="edit-icon" stroke-linecap="round" stroke-linejoin="round"
-                                        d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                </svg>
-                            </button>
-                            <div
-                                class="edit-dropdown min-w-[100px] bg-gray-300 absolute top-11 -right-4 hidden flex-col text-left rounded text-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="edit-toggle h-10 w-10 text-blue-800 cursor-pointer" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path class="edit-toggle" stroke-linecap="round" stroke-linejoin="round"
+                                    d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                            </svg>
+                            <div id="edit-dropdown"
+                                class="min-w-[100px] bg-gray-300 absolute top-11 -right-4 hidden flex-col text-left rounded text-gray-700">
                                 <a href="#" class="px-1 py-1">Edit</a>
                                 <a href="#" class="px-1 py-1">Delete</a>
                             </div>

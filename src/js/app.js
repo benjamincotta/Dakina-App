@@ -11,13 +11,11 @@ document.body.addEventListener('click', e => {
 })
 
 // EDIT TWEET BUTTON:
-const editTweetButtons = document.querySelectorAll('.edit-toggle')
-
-editTweetButtons.forEach(button => {
-  let dropdowncontent = button.parentElement.querySelector('.edit-dropdown')
-  button.addEventListener('click', () => {
-    dropdowncontent.classList.toggle('show-edit-dropdown')
-  })
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('edit-toggle')) {
+    e.target.nextElementSibling.classList.toggle('flex')
+    e.target.nextElementSibling.classList.toggle('hidden')
+  }
 })
 
 // NEW TWEET BUTTON + MODAL
