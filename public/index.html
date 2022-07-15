@@ -17,7 +17,7 @@
 
 <body class="bg-background font-text-font">
     <div id="new-tweet-modal" class="hidden justify-center items-center bg-black bg-opacity-60 absolute inset-0 z-10">
-        <form id="new-tweet-form" class="min-w-[40%] flex flex-col text-center bg-soft_blue p-4 rounded">
+        <form id="new-tweet-form" class="min-w-[40%] mx-4 md:mx-0 flex flex-col text-center bg-soft_blue p-4 rounded">
             <div class="flex justify-between items-center">
                 <div></div>
                 <h3 class="text-2xl text-blue-900 font-light">New Tweet</h3>
@@ -86,26 +86,19 @@
                 </div>
             </div>
         </header>
-        <main class="app-area mt-20 ">
-            <ul id="tweets-list" class="grid md:grid-cols-2 gap-4">
+        <main class="app-area mt-20">
+            <ul id="tweets-list" class="grid md:grid-cols-2 2xl:grid-cols-3 gap-4">
                 <li class="tweet border flex flex-col justify-between bg-gray-300 rounded">
-                    <div class="p-2 ml-4 text-left flex flex-col justiy-between">
+                    <div class="p-2 ml-4 text-left flex flex-col justify-between">
                         <div
                             class="tweet-header pt-2 flex flex-col md:flex-row justify-between items-start md:items-center">
                             <span data-tweet-item-title class="mt-2 md:mt-0 font-medium text-xl">My
                                 First
                                 Tweet</span>
                             <span data-tweet-item-tag
-                                class="m-4 bg-orange-600 border-solid rounded-lg text-xs text-white px-2 font-light">general</span>
+                                class="mt-4 mb-2 md:m-4 bg-orange-600 border-solid rounded-lg text-xs text-white px-2 font-light">general</span>
                         </div>
-                        <span data-tweet-item-content class="mt-4">Tweet content... I love using
-                            Dakina
-                            to plan my
-                            tweets
-                            and
-                            keep them
-                            organized outside of Twitter. Thanks @Dakina for
-                            making tweeting easier!</span>
+                        <span data-tweet-item-content class="mt-4">Tweet content...</span>
                     </div>
                     <div class="edit-button flex justify-between mr-4 relative">
                         <div></div>
@@ -125,12 +118,12 @@
                 </li>
                 <template id="tweet-item-template">
                     <li class="tweet-item border flex flex-col justify-between bg-gray-300 rounded">
-                        <div class="p-2 ml-4 text-left flex flex-col justiy-between">
+                        <div class="p-2 ml-4 text-left flex flex-col justify-between">
                             <div
                                 class="tweet-header pt-2 flex flex-col md:flex-row justify-between items-start md:items-center">
                                 <span data-tweet-item-title class="mt-2 md:mt-0 font-medium text-xl"></span>
                                 <span data-tweet-item-tag
-                                    class="m-4 bg-orange-600 border-solid rounded-lg text-white px-2 font-light">general</span>
+                                    class="mt-4 mb-2 md:m-4 bg-orange-600 border-solid rounded-lg text-white text-xs px-2 font-light">general</span>
                             </div>
                             <span data-tweet-item-content class="mt-4"></span>
                         </div>

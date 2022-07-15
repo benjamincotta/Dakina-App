@@ -540,6 +540,10 @@ video {
   margin-left: 2rem;
   margin-right: 2rem;
 }
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
 .mt-4 {
   margin-top: 1rem;
 }
@@ -830,9 +834,18 @@ textarea[type="text"] {
 }
 @media (min-width: 768px) {
 
+  .md\:m-4 {
+    margin: 1rem;
+  }
+
   .md\:mx-20 {
     margin-left: 5rem;
     margin-right: 5rem;
+  }
+
+  .md\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
   .md\:mt-0 {
@@ -845,6 +858,10 @@ textarea[type="text"] {
 
   .md\:flex {
     display: flex;
+  }
+
+  .md\:min-w-\[40\%\] {
+    min-width: 40%;
   }
 
   .md\:grid-cols-2 {
@@ -871,5 +888,23 @@ textarea[type="text"] {
   .md\:py-0 {
     padding-top: 0px;
     padding-bottom: 0px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .xl\:mx-40 {
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+}
+@media (min-width: 1536px) {
+
+  .\32xl\:mx-40 {
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+
+  .\32xl\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
