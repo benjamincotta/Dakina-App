@@ -41,10 +41,13 @@ const form = document.getElementById('new-tweet-form')
 const tweetTitleInput = document.getElementById('tweet-title-input')
 const tweetContentInput = document.getElementById('tweet-content-input')
 const tweetsList = document.getElementById('tweets-list')
-let tweets = []
+const template = document.querySelector('#tweet-item-template')
+
 const LOCAL_STORAGE_PREFIX = 'DAKINA'
 const TITLE = `${LOCAL_STORAGE_PREFIX}-tweet-title`
 const CONTENT = `${LOCAL_STORAGE_PREFIX}-tweet-content`
+
+let tweets = []
 
 form.addEventListener('submit', e => {
   e.preventDefault()
@@ -59,7 +62,7 @@ form.addEventListener('submit', e => {
   }
   toggleModal()
   tweets.push(newTweet)
-  // renderTweets(newTweet)
+  renderTweets(newTweet)
   saveTweets()
   tweetTitleInput.value = ''
   tweetContentInput.value = ''
@@ -69,6 +72,18 @@ form.addEventListener('submit', e => {
 function saveTweets() {
   localStorage.setItem(TITLE, JSON.stringify(tweets))
 }
-// LOAD TWEETS
-
+// RENDER TWEETS
+function renderTweets(tweet) {
+  const templateClone = template.content.cloneNode(true)
+  const tweetItem = document.querySelector('.tweet-item')
+  const tweetTitleElement = templateClone.querySelector(
+    '[data-tweet-item-title]'
+  )
+  tweetTitleElement.innerText = tweet.title
+  const tweetContentElement = templateClone.querySelector(
+    '[data-tweet-item-content]'
+  )
+  tweetContentElement.innerText = tweet.content
+  tweetsList.appendChild(templateClone)
+}
 // DELETE TWEET
