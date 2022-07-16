@@ -46,6 +46,25 @@ const TWEET_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-tweet`
 let tweets = loadTweets()
 tweets.forEach(renderTweets)
 
+// CHARACTER LIMIT:
+// if input length more than 280, throw error
+const characterindicator = document.getElementById('character-indicator')
+
+const contentInputLength = []
+const maxCharacters = 280
+
+tweetContentInput.addEventListener('keypress', e => {
+  contentInputLength.push(e)
+  characterindicator.innerText = `${contentInputLength.length}/280`
+  if (contentInputLength.length > 5) {
+    characterindicator.classList.add('text-red-500')
+    characterindicator.classList.add('text-sm')
+  } else {
+    characterindicator.classList.remove('text-red-500')
+    characterindicator.classList.remove('text-sm')
+  }
+})
+
 // HIDE PROP TWEET:
 const propTweet = document.querySelector('.prop-tweet')
 if (tweets.length > 0) {
