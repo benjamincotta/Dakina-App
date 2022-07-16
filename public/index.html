@@ -17,7 +17,8 @@
 
 <body class="bg-background font-text-font">
     <div id="new-tweet-modal" class="hidden justify-center items-center bg-black bg-opacity-60 absolute inset-0 z-10">
-        <form id="new-tweet-form" class="min-w-[40%] mx-4 md:mx-0 flex flex-col text-center bg-soft_blue p-4 rounded">
+        <form id="new-tweet-form"
+            class="min-w-[40%] mx-4 md:mx-0 flex flex-col text-center bg-soft_blue p-4 rounded relative">
             <div class="flex justify-between items-center">
                 <div></div>
                 <h3 class="text-2xl text-blue-900 font-light">New Tweet</h3>
@@ -30,11 +31,9 @@
             <div class="title-error hidden flex-start text-red-500 py-1"><span>title
                     missing!</span>
             </div>
-            <div class="relative">
-                <textarea type="text" id="tweet-content-input" class="mt-2 py-2 rounded" style="resize: none" cols="30"
-                    rows="6" placeholder="Content..."></textarea>
-                <div class="absolute bottom-1 right-1 mb-1 mr-1 text-xs"><span id="character-indicator"></span></div>
-            </div>
+            <textarea type="text" id="tweet-content-input" class="mt-2 py-2 rounded" style="resize: none" cols="30"
+                rows="6" placeholder="Content..."></textarea>
+            <div class="absolute bottom-20 right-6 mb-1 mr-1 text-xs"><span id="character-indicator"></span></div>
             <div class="content-error hidden flex-start text-red-500 py-1"><span>content
                     missing!</span>
             </div>
