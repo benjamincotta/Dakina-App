@@ -26,10 +26,15 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </div>
-            <input type="text" id="tweet-title-input" class="mt-4 mb-2 py-2 rounded" placeholder="Title...">
-            <textarea type="text" id="tweet-content-input" class="my-2 py-2 rounded" cols="30" rows="6"
+            <input type="text" id="tweet-title-input" class="mt-4 py-2 rounded error-alert" placeholder='Title...'>
+            <div class="error-messages flex flex-start text-red-500 py-1"><span id="title-error">title
+                    missing!</span>
+            </div>
+            <textarea type="text" id="tweet-content-input" class="mt-2 py-2 rounded" cols="30" rows="6"
                 placeholder="Content..."></textarea>
-
+            <div class="error-messages flex flex-start text-red-500 py-1"><span id="content-error">content
+                    missing!</span>
+            </div>
             <div class='new-tweet-form-buttons mt-8 flex flex-row justify-between'>
                 <a href="#" class="bg-red-400 text-white border-solid rounded-lg text-sm py-1 px-2">Select Tags</a>
                 <div>

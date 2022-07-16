@@ -71,6 +71,7 @@ form.addEventListener('submit', e => {
   tweetTitleInput.value = ''
   tweetContentInput.value = ''
 })
+
 loadTweets()
 // SAVE TWEET
 function saveTweets() {
