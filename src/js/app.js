@@ -26,12 +26,21 @@ const closeModalButton = document.getElementById('close-modal')
 const toggleModal = () => {
   newTweetModal.classList.toggle('hidden')
   newTweetModal.classList.toggle('flex')
+  titleError.classList.add('hidden')
+  contentError.classList.add('hidden')
 }
 
 newTweetButton.addEventListener('click', toggleModal)
 closeModalButton.addEventListener('click', toggleModal)
 
 // FUNCTIONALITY:
+
+// HIDE PROP TWEET:
+const propTweet = document.querySelector('.prop-tweet')
+if (tweets.length > 0) {
+  propTweet.classList.remove('flex')
+  propTweet.classList.add('hidden')
+}
 
 // CREATE NEW TWEET:
 const form = document.getElementById('new-tweet-form')
@@ -46,30 +55,41 @@ const TWEET_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-tweet`
 let tweets = loadTweets()
 tweets.forEach(renderTweets)
 
-// HIDE PROP TWEET:
-const propTweet = document.querySelector('.prop-tweet')
-if (tweets.length > 0) {
-  propTweet.classList.remove('flex')
-  propTweet.classList.add('hidden')
-}
-
 form.addEventListener('submit', e => {
   e.preventDefault()
 
   const newTweetTitle = tweetTitleInput.value
   const newTweetContent = tweetContentInput.value
+  const titleError = document.querySelector('.title-error')
+  const contentError = document.querySelector('.content-error')
 
-  if (newTweetTitle === '') return
-  const newTweet = {
-    title: newTweetTitle,
-    content: newTweetContent,
+  if (newTweetTitle.length < 1 && newTweetContent.length > 0) {
+    titleError.classList.remove('hidden')
+    titleError.classList.add('flex')
+    contentError.classList.add('hidden')
+  } else if (newTweetContent.length < 1 && newTweetTitle.length > 0) {
+    contentError.classList.remove('hidden')
+    contentError.classList.add('flex')
+    titleError.classList.add('hidden')
+  } else if (newTweetTitle.length < 1 && newTweetContent.length < 1) {
+    titleError.classList.remove('hidden')
+    titleError.classList.add('flex')
+    contentError.classList.remove('hidden')
+    contentError.classList.add('flex')
+  } else {
+    const newTweet = {
+      title: newTweetTitle,
+      content: newTweetContent,
+    }
+    toggleModal()
+    tweets.push(newTweet)
+    renderTweets(newTweet)
+    saveTweets()
+    tweetTitleInput.value = ''
+    tweetContentInput.value = ''
+    titleError.classList.add('hidden')
+    contentError.classList.add('hidden')
   }
-  toggleModal()
-  tweets.push(newTweet)
-  renderTweets(newTweet)
-  saveTweets()
-  tweetTitleInput.value = ''
-  tweetContentInput.value = ''
 })
 
 loadTweets()
