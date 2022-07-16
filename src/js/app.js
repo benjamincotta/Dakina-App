@@ -26,21 +26,12 @@ const closeModalButton = document.getElementById('close-modal')
 const toggleModal = () => {
   newTweetModal.classList.toggle('hidden')
   newTweetModal.classList.toggle('flex')
-  titleError.classList.add('hidden')
-  contentError.classList.add('hidden')
 }
 
 newTweetButton.addEventListener('click', toggleModal)
 closeModalButton.addEventListener('click', toggleModal)
 
 // FUNCTIONALITY:
-
-// HIDE PROP TWEET:
-const propTweet = document.querySelector('.prop-tweet')
-if (tweets.length > 0) {
-  propTweet.classList.remove('flex')
-  propTweet.classList.add('hidden')
-}
 
 // CREATE NEW TWEET:
 const form = document.getElementById('new-tweet-form')
@@ -54,6 +45,13 @@ const TWEET_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-tweet`
 
 let tweets = loadTweets()
 tweets.forEach(renderTweets)
+
+// HIDE PROP TWEET:
+const propTweet = document.querySelector('.prop-tweet')
+if (tweets.length > 0) {
+  propTweet.classList.remove('flex')
+  propTweet.classList.add('hidden')
+}
 
 form.addEventListener('submit', e => {
   e.preventDefault()
@@ -91,7 +89,6 @@ form.addEventListener('submit', e => {
     contentError.classList.add('hidden')
   }
 })
-
 loadTweets()
 // SAVE TWEET
 function saveTweets() {
