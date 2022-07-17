@@ -45,6 +45,34 @@ const TWEET_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-tweet`
 
 let tweets = loadTweets()
 tweets.forEach(renderTweets)
+// ///////////////////////////////////////////////////////////////////////////////////
+const tagForm = document.getElementById('tag-selector')
+const tagSelectorButton = document.getElementById('tag-selector-button')
+const tagSelectorForm = document.getElementById('tag-selector-form')
+
+const newTagInput = document.getElementById('add-new-tag')
+const tagsList = document.getElementById('tags-list')
+
+// TAG SELECTOR MODAL:
+tagSelectorButton.addEventListener('click', () => {
+  tagForm.classList.toggle('hidden')
+  tagForm.classList.toggle('flex')
+})
+
+// SAVE TAGS AND LOAD TO TAGS LIST:
+tagSelectorForm.addEventListener('submit', e => {
+  e.preventDefault()
+  renderNewTag()
+  console.log(newTagInput.value)
+})
+
+function renderNewTag() {
+  const templateClone = template.content.cloneNode(true)
+  const tagElement = templateClone.querySelector('[data-tweet-tag]')
+  console.log(tagElement)
+  // tagElement.innerText = newTagInput.value
+  // tagsList.appendChild(templateClone)
+}
 
 // CHARACTER LIMIT:
 const characterindicator = document.getElementById('character-indicator')
@@ -81,6 +109,7 @@ form.addEventListener('submit', e => {
 
   const newTweetTitle = tweetTitleInput.value
   const newTweetContent = tweetContentInput.value
+  const newTagName = newTagInput.value
   const titleError = document.querySelector('.title-error')
   const contentError = document.querySelector('.content-error')
 
@@ -98,7 +127,7 @@ form.addEventListener('submit', e => {
     titleError.classList.add('flex')
     contentError.classList.remove('hidden')
     contentError.classList.add('flex')
-  } else if (newTweetContent.length > 5) {
+  } else if (newTweetContent.length > 280) {
     contentError.classList.remove('hidden')
     contentError.classList.add('flex')
     contentError.innerText = 'Too many characters!'
@@ -106,6 +135,7 @@ form.addEventListener('submit', e => {
     const newTweet = {
       title: newTweetTitle,
       content: newTweetContent,
+      tag: newTagName,
     }
     toggleModal()
     tweets.push(newTweet)
