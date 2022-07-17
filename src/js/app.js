@@ -42,36 +42,57 @@ const template = document.querySelector('#tweet-item-template')
 
 const LOCAL_STORAGE_PREFIX = 'DAKINA'
 const TWEET_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-tweet`
+const TAG_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-saved-tags`
 
 let tweets = loadTweets()
 tweets.forEach(renderTweets)
-// ///////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////
 const tagForm = document.getElementById('tag-selector')
 const tagSelectorButton = document.getElementById('tag-selector-button')
 const tagSelectorForm = document.getElementById('tag-selector-form')
-
+const tagTemplate = document.querySelector('#tweet-tag-template')
 const newTagInput = document.getElementById('add-new-tag')
 const tagsList = document.getElementById('tags-list')
 
+let tags = loadTags()
+tags.forEach(renderNewTag)
+
 // TAG SELECTOR MODAL:
-tagSelectorButton.addEventListener('click', () => {
+tagSelectorButton.addEventListener('click', closeTagModal)
+
+function closeTagModal() {
   tagForm.classList.toggle('hidden')
   tagForm.classList.toggle('flex')
-})
+}
 
-// SAVE TAGS AND LOAD TO TAGS LIST:
+// CREATE NEW TAGS AND LOAD TO TAGS LIST:
 tagSelectorForm.addEventListener('submit', e => {
   e.preventDefault()
-  renderNewTag()
-  console.log(newTagInput.value)
-})
 
+  const newTag = {
+    tag: newTagInput.value,
+  }
+  tags.push(newTag)
+  renderNewTag(newTag)
+  saveTags()
+})
+loadTags()
+// RENDER TAGS:
 function renderNewTag() {
-  const templateClone = template.content.cloneNode(true)
-  const tagElement = templateClone.querySelector('[data-tweet-tag]')
-  console.log(tagElement)
-  // tagElement.innerText = newTagInput.value
-  // tagsList.appendChild(templateClone)
+  const templateTagClone = tagTemplate.content.cloneNode(true)
+  const tagElement = templateTagClone.querySelector('[data-tweet-tag]')
+  tagElement.innerText = newTagInput.value
+  tagsList.appendChild(templateTagClone)
+}
+// SAVE NEW TAGS TO TWEET:
+function saveTags() {
+  localStorage.setItem(TAG_STORAGE_KEY, JSON.stringify(tags))
+}
+// LOAD TAGS:
+function loadTags() {
+  const tagString = localStorage.getItem(TAG_STORAGE_KEY)
+  return JSON.parse(tagString) || []
 }
 
 // CHARACTER LIMIT:
