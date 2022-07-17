@@ -47,22 +47,26 @@ let tweets = loadTweets()
 tweets.forEach(renderTweets)
 
 // CHARACTER LIMIT:
-// if input length more than 280, throw error
 const characterindicator = document.getElementById('character-indicator')
+characterindicator.textContent = 0 + '/280'
 
-const contentInputLength = []
-const maxCharacters = 280
+const countCharacters = () => {
+  let numOfEnteredCharacters = tweetContentInput.value.length
+  let counter = numOfEnteredCharacters
+  characterindicator.textContent = counter + '/280'
 
-tweetContentInput.addEventListener('keypress', e => {
-  contentInputLength.push(e)
-  characterindicator.innerText = `${contentInputLength.length}/280`
-  if (contentInputLength.length > 5) {
+  if (numOfEnteredCharacters > 280) {
     characterindicator.classList.add('text-red-500')
     characterindicator.classList.add('text-sm')
   } else {
     characterindicator.classList.remove('text-red-500')
     characterindicator.classList.remove('text-sm')
   }
+}
+
+tweetContentInput.addEventListener('input', countCharacters)
+form.addEventListener('submit', () => {
+  characterindicator.textContent = 0 + '/280'
 })
 
 // HIDE PROP TWEET:
@@ -88,11 +92,16 @@ form.addEventListener('submit', e => {
     contentError.classList.remove('hidden')
     contentError.classList.add('flex')
     titleError.classList.add('hidden')
+    contentError.innerText = 'Content missing!'
   } else if (newTweetTitle.length < 1 && newTweetContent.length < 1) {
     titleError.classList.remove('hidden')
     titleError.classList.add('flex')
     contentError.classList.remove('hidden')
     contentError.classList.add('flex')
+  } else if (newTweetContent.length > 5) {
+    contentError.classList.remove('hidden')
+    contentError.classList.add('flex')
+    contentError.innerText = 'Too many characters!'
   } else {
     const newTweet = {
       title: newTweetTitle,
