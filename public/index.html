@@ -36,6 +36,7 @@
             <div class="absolute bottom-20 right-6 mb-1 mr-1 text-xs"><span id="character-indicator"></span></div>
             <div class="content-error hidden flex-start text-red-500 py-1"><span></span>
             </div>
+
             <div class='new-tweet-form-buttons mt-8 flex flex-row justify-between'>
                 <a href="#" class="bg-red-400 text-white border-solid rounded-lg text-sm py-1 px-2">Select Tags</a>
                 <div>
@@ -44,6 +45,17 @@
                 </div>
             </div>
         </form>
+        <div class="flex flex-col justify-evenly items-start absolute bg-blue-300 py-3 px-1 rounded">
+            <form id="tag-selector">
+                <input type="tag" id="add-new-tag" class="my-2 rounded mx-2" placeholder='Add new tag...'>
+                <ul class="mx-2 px-2">
+                    <span class="loaded-tags">
+                        <li class="my-1 block text-gray-700"><a href="#">general</a></li>
+                        <li class="my-1 block text-gray-700"><a href="#">quotes</a></li>
+                    </span>
+                </ul>
+            </form>
+        </div>
     </div>
     <div class="container-md mx-8 md:mx-20">
         <header>
@@ -130,7 +142,7 @@
                                 class="tweet-header pt-2 flex flex-col md:flex-row justify-between items-start md:items-center">
                                 <span data-tweet-item-title class="mt-2 md:mt-0 font-medium text-xl"></span>
                                 <span data-tweet-item-tag
-                                    class="mt-4 mb-2 md:m-4 bg-orange-600 border-solid rounded-lg text-white text-xs px-2 font-light">general</span>
+                                    class="mt-4 mb-2 md:m-4 bg-orange-600 border-solid rounded-lg text-white text-xs px-2 font-light"></span>
                             </div>
                             <span data-tweet-item-content class="mt-4"></span>
                         </div>
