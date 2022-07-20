@@ -680,6 +680,18 @@ video {
 .h-10 {
   height: 2.5rem;
 }
+.h-full {
+  height: 100%;
+}
+.h-screen {
+  height: 100vh;
+}
+.h-96 {
+  height: 24rem;
+}
+.min-h-full {
+  min-height: 100%;
+}
 .w-6 {
   width: 1.5rem;
 }

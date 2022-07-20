@@ -128,7 +128,8 @@ if (tweets.length > 0) {
   propTweet.classList.remove('flex')
   propTweet.classList.add('hidden')
 }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CREATE NEW TWEET:
 form.addEventListener('submit', e => {
   e.preventDefault()
 
@@ -201,3 +202,24 @@ function loadTweets() {
 
 // DELETE SINGLE TWEET:
 const deleteButton = document.querySelector('delete-button')
+const deleteModal = document.getElementById('delete-modal')
+const cancelDelete = document.getElementById('cancel-delete')
+const confirmDelete = document.getElementById('confirm-delete')
+
+function showDeleteModal() {
+  deleteModal.classList.toggle('hidden')
+  deleteModal.classList.toggle('flex')
+}
+function closeDeleteModal() {
+  deleteModal.classList.toggle('flex')
+  deleteModal.classList.toggle('hidden')
+}
+cancelDelete.addEventListener('click', e => {
+  if (e.target === cancelDelete) {
+    closeDeleteModal()
+  }
+})
+
+// function confirmDelete() {
+//   // select the tweet we clicked on, remove it from list and remove from local storage
+// }
