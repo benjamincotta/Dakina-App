@@ -11,12 +11,16 @@ document.body.addEventListener('click', e => {
 })
 
 // EDIT TWEET BUTTON:
-document.addEventListener('click', e => {
-  if (e.target.classList.contains('edit-toggle')) {
-    e.target.nextElementSibling.classList.toggle('flex')
-    e.target.nextElementSibling.classList.toggle('hidden')
-  }
-})
+function showEditMenu(elem) {
+  elem.parentElement.nextElementSibling.classList.toggle('hidden')
+  elem.parentElement.nextElementSibling.classList.toggle('flex')
+  document.addEventListener('click', e => {
+    if (!e.target.classList.contains('elips')) {
+      elem.parentElement.nextElementSibling.classList.add('hidden')
+      elem.parentElement.nextElementSibling.classList.remove('flex')
+    }
+  })
+}
 
 // NEW TWEET BUTTON + MODAL
 const newTweetButton = document.getElementById('new-tweet-button')
@@ -47,7 +51,7 @@ const TAG_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-saved-tags`
 let tweets = loadTweets()
 tweets.forEach(renderTweets)
 
-/////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const tagForm = document.getElementById('tag-selector')
 const tagSelectorButton = document.getElementById('tag-selector-button')
 const tagSelectorForm = document.getElementById('tag-selector-form')
@@ -94,7 +98,7 @@ function loadTags() {
   const tagString = localStorage.getItem(TAG_STORAGE_KEY)
   return JSON.parse(tagString) || []
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CHARACTER LIMIT:
 const characterindicator = document.getElementById('character-indicator')
 characterindicator.textContent = 0 + '/280'
@@ -157,6 +161,7 @@ form.addEventListener('submit', e => {
       title: newTweetTitle,
       content: newTweetContent,
       tag: newTagName,
+      id: new Date().valueOf().toString(),
     }
     toggleModal()
     tweets.push(newTweet)
@@ -194,4 +199,5 @@ function loadTweets() {
   return JSON.parse(tweetString) || []
 }
 
-// DELETE TWEET
+// DELETE SINGLE TWEET:
+const deleteButton = document.querySelector('delete-button')
