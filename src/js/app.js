@@ -175,10 +175,20 @@ form.addEventListener('submit', e => {
   }
 })
 loadTweets()
+
 // SAVE TWEET
 function saveTweets() {
   localStorage.setItem(TWEET_STORAGE_KEY, JSON.stringify(tweets))
 }
+
+// tweetsList.addEventListener('change', e => {
+//   const parent = e.target.closest('.tweet-item')
+//   const tweetId = parent.closest.todoId
+//   const tweet = tweets.find(t => t.id === tweetId)
+//   console.log(parent)
+//   saveTweets()
+// })
+
 // RENDER TWEETS
 function renderTweets(tweet) {
   const templateClone = template.content.cloneNode(true)
@@ -220,6 +230,19 @@ cancelDelete.addEventListener('click', e => {
   }
 })
 
-// function confirmDelete() {
-//   // select the tweet we clicked on, remove it from list and remove from local storage
-// }
+const tweetItems = document.querySelectorAll('.tweet-item')
+tweetItems.forEach(item => {
+  console.log(item.tweetsList)
+})
+
+// tweetItems.addEventListener('click', e => {
+//   console.log(tweetItems)
+// })
+
+function confirmDeleteFunc() {
+  // select the tweet we clicked on,
+  const currentTweet = tweetsList.parentElement
+
+  // remove it from list
+  // delete from local storage
+}
